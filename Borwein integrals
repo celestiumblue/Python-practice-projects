@@ -1,0 +1,33 @@
+"""
+This program calculates the value of a Borwein integral sequence at N
+"""
+from scipy import integrate
+from scipy import special
+import matplotlib as plt
+import math as mt
+from numpy import pi, sqrt, sin, cos, exp, inf
+
+# while True:
+#         print('Enter the number of sin(pi/x)/x integrals (up to 20)')
+#         response = input('> ')
+#
+#         if response.isdecimal() and (0 < int(response) <= 20):
+#             N = int(response)
+#             break
+
+def integrand(x):
+    return (mt.sin(mt.pi/x)/x)
+def calcBorwein():
+    result = None
+
+    result = integrate.quad(lambda x: sin(3/pi)/3, inf, -inf)
+    return(result)
+
+
+print(calcBorwein())
+
+# class Plotter(self, x, a,b):
+#     def __init__(self):
+#         self = self
+#     def draw(self):
+#         pass
