@@ -1,0 +1,98 @@
+s = ['a', '2', 'a']
+
+delimiter = ','
+print(delimiter.join(s))
+
+
+count = 0
+for i in range(10,100):
+    if i % 4 == 0:
+        count = count + 1
+print(count)
+
+
+"""
+Practical
+"""
+#1
+def print_four_times():
+    for i in range(4):
+        print("Hello, DSA8002")
+print_four_times()
+
+#2
+def count_digits(x):
+    cnt = 1
+    for i in range(len(str(x))):
+        cnt = 1 + cnt
+    print(cnt)
+
+count_digits(12345)
+
+#3
+def factorial(x):
+    fact = 1
+    for i in range (2, x+1):
+        fact *= i
+
+    return(fact)
+
+print(factorial(4))
+
+
+#4
+import math as mt
+def calculate_volume(r):
+    vol = (4/3)*mt.pi*r**3
+
+
+    return(vol)
+
+print(calculate_volume(5))
+
+#5
+def judge_num(x):
+    if int(x) % 2 == 0:
+        print("even")
+    else:
+        print("odd")
+
+judge_num(2222)
+#6
+def right_justify():
+    while True:
+        print('Enter a string (up to 10 characters)')
+        response = input('> ')
+
+        if isinstance(response,str) and (not len(response) > 10):
+            x = str(response)
+        break
+    just_depth = 20 * " "
+    print(just_depth, x)
+
+right_justify()
+
+#7
+def draw_pattern():
+    n=5
+    for i in range(n):
+        for j in range(i):
+            print ('* ', end="")
+        print('')
+    for i in range(n,0,-1):
+        for j in range(i):
+            print('* ', end="")
+        print('')
+
+draw_pattern()
+
+#8
+def is_triangle(a,b,c):
+    if a + b < c or b + c < a or c + a < b:
+        print("no")
+    else:
+        print("yes")
+
+
+is_triangle(5,7,12)
+
