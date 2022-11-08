@@ -1,0 +1,83 @@
+"""
+Practice tasks 2
+"""
+#1
+
+def istrcmp(n, m):
+    n = n.lower()
+    m = m.lower()
+    if n == m:
+        print("True")
+    else:
+        print("False")
+
+
+istrcmp("shrek", "SHREK")
+
+
+#2
+
+def istrcmp(n, m):
+    if n == m:
+        print("True")
+    else:
+        print("False")
+
+
+istrcmp("shrek", "SHREK")
+
+#3
+
+def cumulative_product(x):
+    new_list = []
+    for i in range(len(x)):
+        if i == 0:
+            new_list.append(x[i])
+        else:
+            new_list.append(x[i] * new_list[i-1])
+    return(new_list)
+
+def cumulative_product38(x):
+    curr = 1
+    new_list = [(curr:=curr*v) for v in x]
+    return(new_list)
+print(cumulative_product([1,2,3,4]))
+print(cumulative_product38([4, 3, 2, 1]))
+#4
+import time
+start_time = time.time()
+
+def unique(list):
+    used = set(list)
+    unique = [x for x in list if x not in used and (used.add(x) or True)]
+    print(unique)
+    print("time elapsed: {:.2f}s".format(time.time() - start_time))
+
+def uniqueloop(list):
+    stack = []
+    for i in list:
+        if i not in stack:
+            stack.append(i)
+        else:
+            pass
+    print(stack)
+    print("time elapsed: {:.2f}s".format(time.time() - start_time))
+
+def uniqueset(list):
+    print(set(list))
+    print("time elapsed: {:.2f}s".format(time.time() - start_time))
+    return(set(list))
+
+import random as rd
+uniquevals = []
+for i in range(0,1000):
+    n = rd.randint(1,12)
+    uniquevals.append(n)
+    print(uniquevals)
+start_time = time.time()
+unique(uniquevals)
+start_time = time.time()
+uniqueloop(uniquevals)
+start_time = time.time()
+uniqueset(uniquevals)
+
