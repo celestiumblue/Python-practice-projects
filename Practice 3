@@ -1,0 +1,89 @@
+import numpy as np
+
+a = np.array([[0, 1, 2], [3, 4, 5]])
+b = a.sum(axis=0)
+print (b)
+
+"""
+Exercises | Day 3
+"""
+#1
+
+def group(seq, num):
+    avg = len(seq) / float(num)
+    out = []
+    last = 0.0
+
+    while last < len(seq):
+        out.append(seq[int(last):int(last + avg)])
+        last += avg
+
+    return out
+
+print(group([1,2,3,4,5,6,7,8,9,9], 3))
+
+
+#2
+def lensort(list):
+     sorted_list = sorted(list, key = len)
+     return(sorted_list)
+
+
+print(lensort(["python", "c", "haskell", "java", "rust", "kotlin", "holyc"]))
+
+
+#3
+
+def array(n,m):
+     array = np.full((2,3), None)
+     return(array)
+
+print(array(2,3))
+
+
+#4
+def sum_vowels(s):
+     count = 0
+     for i in s:
+          if i in "aeiou":
+               count +=1
+          else:
+              pass
+     print("The number of vowels is ", str(count))
+
+sum_vowels("yaodia")
+
+#5
+
+def invertdict(d):
+
+    newd = dict((v, k) for k, v in d.items())
+
+    return(newd)
+
+print(invertdict({1: "n"}))
+
+
+#6
+
+def dups(l):
+    seen = set()
+    uniq = []
+    for i in l:
+        if i not in seen:
+            uniq.append(i)
+            seen.add(i)
+    print(uniq)
+    return(uniq)
+dups([1,1,1,1,1,2,1,1,1,11,1,1,1,1,1,1,1,1,111,1,11,1,1,4321314,4,4])
+#7
+
+def enumerate_list2dict(x):
+    newd = {k+1: v for k, v in enumerate(x)}
+    return(newd)
+print(enumerate_list2dict([1, "mars", "venus", 0.43]))
+#8
+def enumerate_list2tuple(x):
+    newl = list((m, n) for m, n in enumerate(x))
+    return(newl)
+print(enumerate_list2tuple([1,2,4,5,3]))
