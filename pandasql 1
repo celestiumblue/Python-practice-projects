@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+from pandasql import sqldf
+toysDf = pd.read_csv(r"C:\Users\40367624\Desktop\toy_dataset-sample.csv")
+toysWelfare = pd.read_csv(r"C:\Users\40367624\Desktop\toy_dataset-welfare.csv")
+print(toysDf.shape)
+print(toysDf.head())
+print(toysWelfare.shape)
+print(toysWelfare.head())
+query = "SELECT AVG(Income) AS Average FROM  toysDf;"
+df_res = sqldf(query)
+print(df_res)
+query = "SELECT * FROM toysDf WHERE City!='Dallas'"
+df_res = sqldf(query)
+print(df_res)
+query = "SELECT * FROM toysDf WHERE Age < 60 AND City = 'New York City'"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+query = "SELECT MAX(Age) FROM toysDf;"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+query = "SELECT COUNT(Age) FROM toysDf WHERE Age = (SELECT MAX(Age) FROM toysDf);"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+query = "SELECT AVG(Income), AVG(Age) FROM toysDf WHERE City = 'New York City';"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+query = "SELECT ((AVG(Income)/AVG(Age))-20) as PersonalWageGrowth FROM toysDf WHERE City = 'New York City';"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+query = "SELECT ((AVG(Income)/AVG(Age))-20) as PersonalWageGrowth FROM toysDf WHERE City = 'New York City' GROUP BY Illness;"
+df_res = sqldf(query)
+print(df_res)
+print(df_res.shape)
+
+
+query = "SELECT STD(Income) FROM toysDf WHERE City = 'New York City' GROUP BY Illness;"
+df_res = sqldf(query)
+
+query =  "SELECT(t2.sub1 - t1.sub1) AS sub1, (t2.sub2 - t1.sub2) AS sub2 FROM table t1 CROSS JOIN table t2 WHERE t1.date = '2014-11-08' AND t2.id = '2014-11-07';"
+print(df_res)
+print(df_res.shape)
+st_dev = np.std(toysDf["Income"].groupby(toysDf["Illness"]))
+print(st_dev)
+merged = pd.merge(toysDf, toysWelfare, left_on = 'Number', right_on = "IDNum", how='inner')
+query  = "SELECT COUNT (*) FROM merged WHERE City = 'Dallas' and Welfare = 1"
+df_res = sqldf(query)
+print(df_res)
